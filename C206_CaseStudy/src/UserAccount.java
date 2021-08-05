@@ -1,11 +1,11 @@
 
+
 public class UserAccount {
 	private String name;
 	private String role;
 	private String email;
 	private String password;
 	private String status;
-	
 	
 	public UserAccount(String name, String role, String email, String password, String status) {
 		this.name = name;
@@ -64,10 +64,6 @@ public class UserAccount {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
-	
-	
-	
 	
 
 }
