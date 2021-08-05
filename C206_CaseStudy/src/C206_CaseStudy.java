@@ -39,8 +39,7 @@ public class C206_CaseStudy {
 					} else {
 						Helper.line(80, "-");
 						System.out.println("Invalid option");
-						return;
-
+						break;
 					}
 				}
 			} else if (option == 2) {
@@ -87,7 +86,6 @@ public class C206_CaseStudy {
 					} else {
 						Helper.line(80, "-");
 						System.out.println("Invalid option");
-
 						break;
 
 					}
