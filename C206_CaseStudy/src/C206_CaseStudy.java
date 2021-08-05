@@ -27,10 +27,13 @@ public class C206_CaseStudy {
 				while (option1 != OPTIONNO1) {
 					if (option1 == 1) {
 						// register visitor account
+						break;
 					} else if (option1 == 2) {
 						// quotation request
+						break;
 					} else if (option1 == 3) {
 						// manage appointment
+						break;
 					} else if (option1 == 4) {
 						System.out.println("Thanks for using!");
 					} else {
@@ -46,6 +49,7 @@ public class C206_CaseStudy {
 				while (option2 != OPTIONNO2) {
 					if (option2 == 1) {
 						// manage customer
+						break;
 					} else if (option2 == 2) {
 						// manage package
 						C206_CaseStudy.setHeader("Manage Packages");
@@ -71,9 +75,12 @@ public class C206_CaseStudy {
 						}
 					} else if (option2 == 3) {
 						// manage request for quotation
+						break;
 					} else if (option2 == 4) {
+						break;
 						// manage quotation
 					} else if (option2 == 5) {
+						break;
 						// manage appointment
 					} else if (option2 == 6) {
 						System.out.println("Thanks for using!");
