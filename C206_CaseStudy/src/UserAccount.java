@@ -12,7 +12,7 @@ public class UserAccount {
 		this.role = role;
 		this.email = email;
 		this.password = password;
-		this.status = "Confirmed";
+		this.status = "New";
 	} 
 
 
