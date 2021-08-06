@@ -33,12 +33,16 @@ public class UserAccount {
 
 
 
-	public void setPassword(String password) {
+	public void getPassword(String password) {
 		this.password = password;
 	}
 
 
 	public String getStatus() {
+		return status;
+	}
+	
+	public String setStatus() {
 		return status;
 	}
 
