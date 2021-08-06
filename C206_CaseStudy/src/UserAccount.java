@@ -7,7 +7,7 @@ public class UserAccount {
 	private String password;
 	private String status;
 	
-	public UserAccount(String name, String role, String email, String password, String status) {
+	public UserAccount(String name, String role, String email, String password) {
 		this.name = name;
 		this.role = role;
 		this.email = email;
@@ -35,10 +35,6 @@ public class UserAccount {
 		return password;
 	}
 
-
-	public String getStatus() {
-		return status;
-	}
 	
 	public void setStatus(String status) {
 		this.status = status;
