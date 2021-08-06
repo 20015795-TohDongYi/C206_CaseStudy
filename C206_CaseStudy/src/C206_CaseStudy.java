@@ -1,7 +1,5 @@
 import java.util.ArrayList;
 
-import jdk.internal.org.jline.utils.Status;
-
 public class C206_CaseStudy {
 	private static final int OPTIONNO = 3;
 	private static final int OPTIONNO1 = 4;
@@ -161,7 +159,7 @@ public class C206_CaseStudy {
 		String email= Helper.readString("Enter email address > ");
 		String password = Helper.readString("Enter password > ");
 		
-		UserAccount ua = new UserAccount(name, role, email, password );
+		UserAccount ua = new UserAccount(name, role, email, password);
 		return ua;
 	}
 
