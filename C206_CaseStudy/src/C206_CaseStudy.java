@@ -55,6 +55,7 @@ public class C206_CaseStudy {
 						System.out.println("1. Add Package");
 						System.out.println("2. View All Packages");
 						System.out.println("3. Delete Package by Package Code");
+						System.out.println("4. Quit");
 						Helper.line(80, "-");
 						int packageOption = Helper.readInt("Enter option > ");
 
@@ -67,7 +68,11 @@ public class C206_CaseStudy {
 						} else if (packageOption == 3) {
 							C206_CaseStudy.deletePackage(packageList);
 
-						} else {
+						}else if (packageOption == 4) {
+							System.out.println("Goodbye");
+							break;
+						}
+						else {
 							Helper.line(80, "-");
 							System.out.println("Invalid option");
 							break;
