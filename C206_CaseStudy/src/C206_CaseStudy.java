@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+import jdk.internal.org.jline.utils.Status;
+
 public class C206_CaseStudy {
 	private static final int OPTIONNO = 3;
 	private static final int OPTIONNO1 = 4;
@@ -7,7 +9,15 @@ public class C206_CaseStudy {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		
+		//UserAccount
+		ArrayList<UserAccount> userList = new ArrayList<UserAccount>();
+		
+		userList.add(new UserAccount("Angelika", "Customer","20006337@myrp.edu.sg", "RP123@456"));
+		userList.add(new UserAccount("Ji Fu", "Customer", "19022507@myrp.edu.sg", "RP765@4321"));
+		userList.add(new UserAccount("Fatheen", "Designer", "19006266@myrp.edu.sg", "RP12345"));
+		
+		//Package
 		ArrayList<Package> packageList = new ArrayList<Package>();
 
 		packageList.add(new Package("WP123", "whole place", "15/09/2021", "13/10/2021", 500));
@@ -27,7 +37,10 @@ public class C206_CaseStudy {
 				while (option1 != OPTIONNO1) {
 					if (option1 == 1) {
 						// register visitor account
-						return;
+						UserAccount ua= AddAccount();
+						C206_CaseStudy.addUser(userList, ua);
+						break;
+						
 					} else if (option1 == 2) {
 						// quotation request
 						return;
@@ -48,6 +61,7 @@ public class C206_CaseStudy {
 				while (option2 != OPTIONNO2) {
 					if (option2 == 1) {
 						// manage customer
+						C206_CaseStudy.viewAllAccounts(userList);
 						return;
 					} else if (option2 == 2) {
 						// manage package
@@ -55,7 +69,6 @@ public class C206_CaseStudy {
 						System.out.println("1. Add Package");
 						System.out.println("2. View All Packages");
 						System.out.println("3. Delete Package by Package Code");
-						System.out.println("4. Quit");
 						Helper.line(80, "-");
 						int packageOption = Helper.readInt("Enter option > ");
 
@@ -68,11 +81,7 @@ public class C206_CaseStudy {
 						} else if (packageOption == 3) {
 							C206_CaseStudy.deletePackage(packageList);
 
-						}else if (packageOption == 4) {
-							System.out.println("Goodbye");
-							break;
-						}
-						else {
+						} else {
 							Helper.line(80, "-");
 							System.out.println("Invalid option");
 							break;
@@ -144,7 +153,63 @@ public class C206_CaseStudy {
 		System.out.println(header);
 		Helper.line(80, "-");
 	}
+	
+	//UserAccount
+	public static UserAccount AddAccount() {
+		String name = Helper.readString("Enter Name> ");
+		String role= Helper.readString("Enter Role> ");
+		String email= Helper.readString("Enter email address > ");
+		String password = Helper.readString("Enter password > ");
+		
+		UserAccount ua = new UserAccount(name, role, email, password );
+		return ua;
+	}
 
+	public static void addUser(ArrayList<UserAccount> userList, UserAccount ua) {
+		userList.add(ua);
+		System.out.println("Account Added!");
+	}
+
+	public static String retrieveAllAccounts(ArrayList<UserAccount> userList) {
+		String output = "";
+		for (int i = 0; i < userList.size(); i++) {
+			output += String.format("%-15s %-30s %-20s %-20s %-10s\n", userList.get(i).getName(), userList.get(i).getRole(), userList.get(i).getEmail(),
+					userList.get(i).getPassword(), userList.get(i).getStatus());
+		}
+		return output;
+	}
+
+	public static void viewAllAccounts(ArrayList<UserAccount> userList) {
+		C206_CaseStudy.setHeader("USER ACCOUNTS");
+		String output = String.format("%-15s %-30s %-20s %-20s %-10s\n", "NAME", "ROLE",
+				"EMAIL", "PASSWORD", "STATUS");
+		output += retrieveAllAccounts(userList);
+		System.out.println(output);
+	}
+
+	public static void deleteAccount(ArrayList<UserAccount> userList) {
+		String name = Helper.readString("Enter name of user to be deleted> ");
+		boolean check = false;
+		for (int i = 0; i < userList.size(); i++) {
+			if (userList.get(i).getName().equals(name)) {
+				userList.remove(i);
+				check = true;
+			}
+
+		}
+		if (check == true) {
+			Helper.line(80, "-");
+			System.out.println("Account deleted");
+		}
+		else {
+			Helper.line(80, "-");
+			System.out.println("No Account found");
+		}
+
+	}
+	
+	
+	//Package
 	public static Package inputPackage() {
 		String code = Helper.readString("Enter Package Code> ");
 		String description = Helper.readString("Enter description> ");
