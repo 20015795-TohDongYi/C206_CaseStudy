@@ -31,10 +31,8 @@ public class UserAccount {
 		return email;
 	}
 
-
-
-	public void getPassword(String password) {
-		this.password = password;
+	public String getPassword() {
+		return password;
 	}
 
 
@@ -42,8 +40,8 @@ public class UserAccount {
 		return status;
 	}
 	
-	public String setStatus() {
-		return status;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 
