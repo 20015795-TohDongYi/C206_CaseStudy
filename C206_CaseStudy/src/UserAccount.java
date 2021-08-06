@@ -12,7 +12,7 @@ public class UserAccount {
 		this.role = role;
 		this.email = email;
 		this.password = password;
-		this.status = status;
+		this.status = "Confirmed";
 	} 
 
 
@@ -21,34 +21,16 @@ public class UserAccount {
 	}
 
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-
 	public String getRole() {
 		return role;
 	}
 
-
-	public void setRole(String role) {
-		this.role = role;
-	}
 
 
 	public String getEmail() {
 		return email;
 	}
 
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-
-	public String getPassword() {
-		return password;
-	}
 
 
 	public void setPassword(String password) {
@@ -60,11 +42,5 @@ public class UserAccount {
 		return status;
 	}
 
-
-	public void setStatus(String status) 
-	{
-		this.status = status;
-	}
-	
 
 }
