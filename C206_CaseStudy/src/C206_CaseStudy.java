@@ -70,6 +70,7 @@ public class C206_CaseStudy {
 
 						}else if (packageOption == 4) {
 							System.out.println("Goodbye");
+							break;
 						}
 						else {
 							Helper.line(80, "-");
