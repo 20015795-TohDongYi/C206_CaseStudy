@@ -17,7 +17,8 @@ public class C206_CaseStudyTest {
 	ArrayList<UserAccount> userList = new ArrayList<UserAccount>();
 	ArrayList<Package> packageList = new ArrayList<Package>();
 	
-	public C206_CaseStudyTest() {
+	public C206_CaseStudyTest() 
+	{
 		super();
 	}
 	
