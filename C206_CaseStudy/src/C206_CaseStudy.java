@@ -67,6 +67,7 @@ public class C206_CaseStudy {
 						System.out.println("1. Add Package");
 						System.out.println("2. View All Packages");
 						System.out.println("3. Delete Package by Package Code");
+						System.out.println("4. Quit");
 						Helper.line(80, "-");
 						int packageOption = Helper.readInt("Enter option > ");
 
@@ -77,7 +78,8 @@ public class C206_CaseStudy {
 						} else if (packageOption == 2) {
 							C206_CaseStudy.viewAllPackage(packageList);
 						} else if (packageOption == 3) {
-							C206_CaseStudy.deletePackage(packageList);
+							String code = inputDelete();
+							C206_CaseStudy.deletePackage(packageList,code);
 
 						} else {
 							Helper.line(80, "-");
@@ -197,7 +199,7 @@ public class C206_CaseStudy {
 		}
 		if (check == true) {
 			Helper.line(80, "-");
-			System.out.println("Account deleted");
+			System.out.println("Account Deleted!");
 		}
 		else {
 			Helper.line(80, "-");
@@ -217,6 +219,10 @@ public class C206_CaseStudy {
 
 		Package p = new Package(code, description, startDate, endDate, amount);
 		return p;
+	}
+	public static String inputDelete() {
+		String code = Helper.readString("Enter Package Code of Package to be deleted> ");
+		return code;
 	}
 
 	public static void addPackage(ArrayList<Package> packageList, Package p) {
@@ -242,8 +248,8 @@ public class C206_CaseStudy {
 		System.out.println(output);
 	}
 
-	public static void deletePackage(ArrayList<Package> packageList) {
-		String code = Helper.readString("Enter Package Code of Package to be deleted> ");
+	public static void deletePackage(ArrayList<Package> packageList,String code) {
+
 		boolean check = false;
 		for (int i = 0; i < packageList.size(); i++) {
 			if (packageList.get(i).getCode().equals(code)) {
