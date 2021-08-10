@@ -91,8 +91,6 @@ public class C206_CaseStudy {
 						return;
 					} else if (option2 == 4) {
 						return;
-						// manage quotation
-						manageQuotation();
 					} else if (option2 == 5) {
 						return;
 						// manage appointment
@@ -120,7 +118,7 @@ public class C206_CaseStudy {
 
 	private static void manageQuotation() {
 		// TODO Auto-generated method stub
-		//Testing 
+		C206_CaseStudy.setHeader("Manage Quotation");
 	}
 
 	public static void menu() {
