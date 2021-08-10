@@ -92,6 +92,7 @@ public class C206_CaseStudy {
 					} else if (option2 == 4) {
 						return;
 						// manage quotation
+						manageQuotation();
 					} else if (option2 == 5) {
 						return;
 						// manage appointment
@@ -115,6 +116,11 @@ public class C206_CaseStudy {
 			}
 		}
 
+	}
+
+	private static void manageQuotation() {
+		// TODO Auto-generated method stub
+		//Testing 
 	}
 
 	public static void menu() {
