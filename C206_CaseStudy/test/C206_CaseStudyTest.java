@@ -128,24 +128,24 @@ public class C206_CaseStudyTest {
 
 	@Test
 	public void testviewAllAccounts() {
-				// Test if Item list is not null but empty - boundary
-				assertNotNull("Test if there is a useraccount arraylist", userList);
+		// Test if Item list is not null but empty - boundary
+		assertNotNull("Test if there is a useraccount arraylist", userList);
+		
+		//test if the list of UserAccount retrieved from the Main is empty - boundary
+		String allUser= C206_CaseStudy.retrieveAllAccounts(userList);
+		String testOutput = "";
+		assertEquals("Test that the retrieved Accounts list is empty?", testOutput, allUser);
 				
-				//test if the list of UserAccount retrieved from the Main is empty - boundary
-				String allUser= C206_CaseStudy.retrieveAllAccounts(userList);
-				String testOutput = "";
-				assertEquals("Test that the retrieved Accounts list is empty?", testOutput, allUser);
+		//Given an empty list, after adding 2 items, test if the size of the list is 2 - normal
+		C206_CaseStudy.addUser(userList, ua1);
+		C206_CaseStudy.addUser(userList, ua2);
 				
-				//Given an empty list, after adding 2 items, test if the size of the list is 2 - normal
-				C206_CaseStudy.addUser(userList, ua1);
-				C206_CaseStudy.addUser(userList, ua2);
-				
-				//test if the expected output string same as the list of package retrieved from the SourceCentre	
-				C206_CaseStudy.viewAllAccounts(userList);
-				allUser= C206_CaseStudy.retrieveAllAccounts(userList);
-				testOutput = String.format("%-15s %-30s %-20s %-20s \n","Angelika", "Customer","20006337@myrp.edu.sg", "RP123@456");
-				testOutput += String.format("%-15s %-30s %-20s %-20s \n","Ji Fu", "Customer", "19022507@myrp.edu.sg", "RP765@4321");
-				assertEquals("Test that package has been added", testOutput, allUser);	
+		//test if the expected output string same as the list of package retrieved from the SourceCentre	
+		C206_CaseStudy.viewAllAccounts(userList);
+		allUser= C206_CaseStudy.retrieveAllAccounts(userList);
+		testOutput = String.format("%-15s %-30s %-20s %-20s \n","Angelika", "Customer","20006337@myrp.edu.sg", "RP123@456");
+		testOutput += String.format("%-15s %-30s %-20s %-20s \n","Ji Fu", "Customer", "19022507@myrp.edu.sg", "RP765@4321");
+		assertEquals("Test that package has been added", testOutput, allUser);	
 		
 	
 
