@@ -141,7 +141,7 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.addUser(userList, ua1);
 		C206_CaseStudy.addUser(userList, ua2);
 				
-		//test if the expected output string same as the list of package retrieved from the SourceCentre	
+		//test if the expected output string same as the list of accounts retrieved from the SourceCentre	
 		C206_CaseStudy.viewAllAccounts(userList);
 		allUser= C206_CaseStudy.retrieveAllAccounts(userList);
 		testOutput = String.format("%-15s %-30s %-20s %-20s \n","Angelika", "Customer","20006337@myrp.edu.sg", "RP123@456");
@@ -182,7 +182,7 @@ public class C206_CaseStudyTest {
 		
 		C206_CaseStudy.addUser(userList, ua1);
 		assertEquals("Check that UserAccount arraylist size is 1", 1, userList.size());
-		assertSame("Check that UserAccount is added", ua1, userList.get(0));
+		assertSame("Check that UserAccount is deleted", ua1, userList.get(0));
 		
 		String name = ua1.getName();
 		C206_CaseStudy.deleteAccount(userList,name);
