@@ -74,6 +74,7 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that Package arraylist size is 1", 1, packageList.size());
 		assertSame("Check that Package is added", p1, packageList.get(0));
 		
+		
 		C206_CaseStudy.addPackage(packageList, p2);
 		assertEquals("Check that Package arraylist size is 2", 2, packageList.size());
 		assertSame("Check that Package is added", p2, packageList.get(1));
