@@ -60,7 +60,7 @@ public class C206_CaseStudy {
 					if (option2 == 1) {
 						// manage customer
 						C206_CaseStudy.viewAllAccounts(userList);
-						return;
+						break;
 					} else if (option2 == 2) {
 						// manage package
 						C206_CaseStudy.setHeader("Manage Packages");
@@ -191,8 +191,8 @@ public class C206_CaseStudy {
 		System.out.println(output);
 	}
 
-	public static void deleteAccount(ArrayList<UserAccount> userList) {
-		String name = Helper.readString("Enter name of user to be deleted> ");
+	public static void deleteAccount(ArrayList<UserAccount> userList, String name) {
+		
 		boolean check = false;
 		for (int i = 0; i < userList.size(); i++) {
 			if (userList.get(i).getName().equals(name)) {
