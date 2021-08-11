@@ -66,8 +66,8 @@ public class C206_CaseStudyTest {
 		assertSame("Check that Package is added", p1, packageList.get(0));
 		
 		C206_CaseStudy.addPackage(packageList, p2);
-		assertEquals("Check that Camcorder arraylist size is 2", 2, packageList.size());
-		assertSame("Check that Camcorder is added", p2, packageList.get(1));
+		assertEquals("Check that Package arraylist size is 2", 2, packageList.size());
+		assertSame("Check that Package is added", p2, packageList.get(1));
 	}
 	
 	@Test
@@ -82,7 +82,7 @@ public class C206_CaseStudyTest {
 		//test if the list of Package retrieved from the SourceCentre is empty - boundary
 		String allpackage= C206_CaseStudy.retrieveAllPackage(packageList);
 		String testOutput = "";
-		assertEquals("Check that ViewAllCamcorderlist", testOutput, allpackage);
+		assertEquals("Check that ViewAllPackagelist", testOutput, allpackage);
 		
 		//Given an empty list, after adding 2 items, test if the size of the list is 2 - normal
 		C206_CaseStudy.addPackage(packageList, p1);
@@ -148,7 +148,7 @@ public class C206_CaseStudyTest {
 		String code = p1.getCode();
 		C206_CaseStudy.deletePackage(packageList,code);
 
-		assertEquals("Check that Camcorder arraylist size is 0", 0, packageList.size());
+		assertEquals("Check that Package arraylist size is 0", 0, packageList.size());
 		
 		
 	}
