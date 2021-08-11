@@ -192,7 +192,7 @@ public class C206_CaseStudy {
 		System.out.println(output);
 	}
 
-	public static void deleteAccount(ArrayList<UserAccount> userList, String name) {
+	public static void deleteAccount(ArrayList<UserAccount> userList, String name ) {
 		
 		boolean check = false;
 		for (int i = 0; i < userList.size(); i++) {
