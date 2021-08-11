@@ -131,7 +131,7 @@ public class C206_CaseStudyTest {
 				// Test if Item list is not null but empty - boundary
 				assertNotNull("Test if there is a useraccount arraylist", userList);
 				
-				//test if the list of useraccount retrieved from the Main is empty - boundary
+				//test if the list of UserAccount retrieved from the Main is empty - boundary
 				String allUser= C206_CaseStudy.retrieveAllAccounts(userList);
 				String testOutput = "";
 				assertEquals("Test that the retrieved Accounts list is empty?", testOutput, allUser);
