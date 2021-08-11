@@ -6,21 +6,22 @@ public class C206_CaseStudy {
 	private static final int OPTIONNO2 = 6;
 
 	public static void main(String[] args) {
+
 		// TODO Auto-generated method stub
-		
-		//UserAccount
+
+		// UserAccount
 		ArrayList<UserAccount> userList = new ArrayList<UserAccount>();
-		
-		userList.add(new UserAccount("Angelika", "Customer","20006337@myrp.edu.sg", "RP123@456"));
+
+		userList.add(new UserAccount("Angelika", "Customer", "20006337@myrp.edu.sg", "RP123@456"));
 		userList.add(new UserAccount("Ji Fu", "Customer", "19022507@myrp.edu.sg", "RP765@4321"));
 		userList.add(new UserAccount("Fatheen", "Designer", "19006266@myrp.edu.sg", "RP12345"));
-		
-		//Package
+
+		// Package
 		ArrayList<Package> packageList = new ArrayList<Package>();
 
-		packageList.add(new Package("WP123", "whole place", "15/09/2021", "13/10/2021", 500));
+		packageList.add(new Package("W0123", "whole place", "15/09/2021", "13/10/2021", 500));
 		packageList.add(new Package("R1234", "restrooms only", "05/08/2021", "15/12/2021", 100));
-		packageList.add(new Package("K1234", "kitchen only", "21/06/2021", "10/08/2021", 200));
+		packageList.add(new Package("K1234", "kitchen only", "21/06-2021", "10/08/2021", 200));
 
 		int option = 0;
 		int option1 = 0;
@@ -35,10 +36,10 @@ public class C206_CaseStudy {
 				while (option1 != OPTIONNO1) {
 					if (option1 == 1) {
 						// register visitor account
-						UserAccount ua= AddAccount();
+						UserAccount ua = AddAccount();
 						C206_CaseStudy.addUser(userList, ua);
 						break;
-						
+
 					} else if (option1 == 2) {
 						// quotation request
 						return;
@@ -79,7 +80,7 @@ public class C206_CaseStudy {
 							C206_CaseStudy.viewAllPackage(packageList);
 						} else if (packageOption == 3) {
 							String code = inputDelete();
-							C206_CaseStudy.deletePackage(packageList,code);
+							C206_CaseStudy.deletePackage(packageList, code);
 
 						} else {
 							Helper.line(80, "-");
@@ -157,14 +158,14 @@ public class C206_CaseStudy {
 		System.out.println(header);
 		Helper.line(80, "-");
 	}
-	
-	//UserAccount
+
+	// UserAccount
 	public static UserAccount AddAccount() {
 		String name = Helper.readString("Enter Name> ");
-		String role= Helper.readString("Enter Role> ");
-		String email= Helper.readString("Enter email address > ");
+		String role = Helper.readString("Enter Role> ");
+		String email = Helper.readString("Enter email address > ");
 		String password = Helper.readString("Enter password > ");
-		
+
 		UserAccount ua = new UserAccount(name, role, email, password);
 		return ua;
 	}
@@ -177,16 +178,16 @@ public class C206_CaseStudy {
 	public static String retrieveAllAccounts(ArrayList<UserAccount> userList) {
 		String output = "";
 		for (int i = 0; i < userList.size(); i++) {
-			output += String.format("%-15s %-30s %-20s %-20s %-10s\n", userList.get(i).getName(), userList.get(i).getRole(), userList.get(i).getEmail(),
-					userList.get(i).getPassword(), userList.get(i).getStatus());
+			output += String.format("%-15s %-30s %-20s %-20s %-10s\n", userList.get(i).getName(),
+					userList.get(i).getRole(), userList.get(i).getEmail(), userList.get(i).getPassword(),
+					userList.get(i).getStatus());
 		}
 		return output;
 	}
 
 	public static void viewAllAccounts(ArrayList<UserAccount> userList) {
 		C206_CaseStudy.setHeader("USER ACCOUNTS");
-		String output = String.format("%-15s %-30s %-20s %-20s %-10s\n", "NAME", "ROLE",
-				"EMAIL", "PASSWORD", "STATUS");
+		String output = String.format("%-15s %-30s %-20s %-20s %-10s\n", "NAME", "ROLE", "EMAIL", "PASSWORD", "STATUS");
 		output += retrieveAllAccounts(userList);
 		System.out.println(output);
 	}
@@ -204,26 +205,38 @@ public class C206_CaseStudy {
 		if (check == true) {
 			Helper.line(80, "-");
 			System.out.println("Account Deleted!");
-		}
-		else {
+		} else {
 			Helper.line(80, "-");
 			System.out.println("No Account found");
 		}
 
 	}
-	
-	
-	//Package
-	public static Package inputPackage() {
-		String code = Helper.readString("Enter Package Code> ");
-		String description = Helper.readString("Enter description> ");
-		String startDate = Helper.readString("Enter date (dd/MM/yyyy) > ");
-		String endDate = Helper.readString("Enter date (dd/MM/yyyy) > ");
-		int amount = Helper.readInt("Enter Package Amount> ");
 
+	// Package
+	public static Package inputPackage() {
+		int check = 0;
+		String code = "";
+		String description = "";
+		String startDate = "";
+		String endDate = "";
+		int amount = 0;
+		while (check != 1) {
+			code = Helper.readString("Enter Package Code> ");
+			description = Helper.readString("Enter description> ");
+			startDate = Helper.readString("Enter date (dd/MM/yyyy) > ");
+			endDate = Helper.readString("Enter date (dd/MM/yyyy) > ");
+			amount = Helper.readInt("Enter Package Amount> ");
+			if (code.matches("\\D{1}\\d{4}") && startDate.matches("\\d{2}/\\d{2}/\\d{4}") && endDate.matches("\\d{2}/\\d{2}/\\d{4}")) {
+				check = 1;
+			} else {
+				System.out.println("Please re-enter");
+			}
+		}
 		Package p = new Package(code, description, startDate, endDate, amount);
 		return p;
+
 	}
+
 	public static String inputDelete() {
 		String code = Helper.readString("Enter Package Code of Package to be deleted> ");
 		return code;
@@ -252,7 +265,7 @@ public class C206_CaseStudy {
 		System.out.println(output);
 	}
 
-	public static void deletePackage(ArrayList<Package> packageList,String code) {
+	public static void deletePackage(ArrayList<Package> packageList, String code) {
 
 		boolean check = false;
 		for (int i = 0; i < packageList.size(); i++) {
@@ -265,8 +278,7 @@ public class C206_CaseStudy {
 		if (check == true) {
 			Helper.line(80, "-");
 			System.out.println("Package deleted");
-		}
-		else {
+		} else {
 			Helper.line(80, "-");
 			System.out.println("No such package found");
 		}

@@ -30,7 +30,7 @@ public class C206_CaseStudyTest {
 		ua3 = new UserAccount("Fatheen", "Designer", "19006266@myrp.edu.sg", "RP12345");
 		
 
-		p1 = new Package("WP123", "whole place", "15/09/2021", "13/10/2021", 500);
+		p1 = new Package("W0123", "whole place", "15/09/2021", "13/10/2021", 500);
 		p2 = new Package("R1234", "restrooms only", "05/08/2021", "15/12/2021", 100);
 		p3 = new Package("K1234", "kitchen only", "21/06/2021", "10/08/2021", 200);
 		
@@ -91,7 +91,7 @@ public class C206_CaseStudyTest {
 		
 		//test if the expected output string same as the list of package retrieved from the SourceCentre	
 		allpackage= C206_CaseStudy.retrieveAllPackage(packageList);
-		testOutput = String.format("%-15s %-30s %-20s %-20s $%-10d\n","WP123", "whole place", "15/09/2021", "13/10/2021", 500);
+		testOutput = String.format("%-15s %-30s %-20s %-20s $%-10d\n","W0123", "whole place", "15/09/2021", "13/10/2021", 500);
 		testOutput += String.format("%-15s %-30s %-20s %-20s $%-10d\n","R1234", "restrooms only", "05/08/2021", "15/12/2021", 100);
 	
 		assertEquals("Test that ViewAllPackagelist", testOutput, allpackage);
@@ -124,7 +124,7 @@ public class C206_CaseStudyTest {
 		//test if the expected output string same as the list of package retrieved from the SourceCentre	
 		C206_CaseStudy.viewAllPackage(packageList);
 		allPackage= C206_CaseStudy.retrieveAllPackage(packageList);
-		testOutput = String.format("%-15s %-30s %-20s %-20s $%-10d\n","WP123", "whole place", "15/09/2021", "13/10/2021", 500);
+		testOutput = String.format("%-15s %-30s %-20s %-20s $%-10d\n","W0123", "whole place", "15/09/2021", "13/10/2021", 500);
 		testOutput += String.format("%-15s %-30s %-20s %-20s $%-10d\n","R1234", "restrooms only", "05/08/2021", "15/12/2021", 100);
 		assertEquals("Test that package has been added", testOutput, allPackage);
 		
