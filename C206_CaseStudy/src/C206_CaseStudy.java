@@ -1,3 +1,6 @@
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class C206_CaseStudy {
@@ -23,6 +26,14 @@ public class C206_CaseStudy {
 		packageList.add(new Package("R1234", "restrooms only", "05/08/2021", "15/12/2021", 100));
 		packageList.add(new Package("K1234", "kitchen only", "21/06-2021", "10/08/2021", 200));
 
+		//Appointment
+		ArrayList<Appointment> apptList = new ArrayList<Appointment>();
+		
+		LocalDate dateNow = LocalDate.now();
+		LocalTime timeNow = LocalTime.now();
+		
+		apptList.add(new Appointment("Wick", dateNow, timeNow, "Fatheen", "Woodlands"));
+		
 		int option = 0;
 		int option1 = 0;
 		int option2 = 0;
@@ -45,6 +56,30 @@ public class C206_CaseStudy {
 						return;
 					} else if (option1 == 3) {
 						// manage appointment
+						C206_CaseStudy.setHeader("Manage Appointment");
+						System.out.println("1. Add Appointment");
+						System.out.println("2. View All Appointment");
+						System.out.println("3. Delete Appointment");
+						System.out.println("4. Quit");
+						Helper.line(80, "-");
+						int apptOption = Helper.readInt("Enter option > ");
+
+						if (apptOption == 1) {
+							System.out.println("ADD APPOINTMENT");
+
+							// C206_CaseStudy.addAppointment(appointmentList, appt);
+							Appointment a = inputAppointment();
+							C206_CaseStudy.addAppointment(apptList, a);
+							break;
+
+						} else if (apptOption == 2) {
+							String out = C206_CaseStudy.viewAllAppointment(apptList);
+							System.out.println(out);
+							break;
+						} else if (apptOption == 3) {
+							//String code = inputDelete();
+							//C206_CaseStudy.deleteAppt(apptList, code);
+						}
 						return;
 					} else if (option1 == 4) {
 						System.out.println("Thanks for using!");
@@ -283,6 +318,40 @@ public class C206_CaseStudy {
 			System.out.println("No such package found");
 		}
 
+	}
+	
+	//Appointment
+	public static Appointment inputAppointment() {
+		String name = Helper.readString("Enter name: ");
+		DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("MM-dd-yyyy");
+		String inputDate = Helper.readString("Enter date in (MM-dd-yyyy) format : ");
+		LocalDate date = LocalDate.parse(inputDate, formatter1);
+		DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("HH:mm");
+		String inputTime = Helper.readString("Enter time in (HH:mm) format : ");
+		LocalTime time = LocalTime.parse(inputTime, formatter2);
+		String designerName = Helper.readString("Enter designer name: ");
+		String address = Helper.readString("Enter address");
+
+		Appointment appt = new Appointment(name, date, time, designerName, address);
+
+		return appt;
+
+	}
+	
+	public static void addAppointment(ArrayList<Appointment> appointmentList, Appointment appt) {
+
+		appointmentList.add(appt);
+		System.out.println("Appointment added");
+
+	} 
+	
+	public static String viewAllAppointment(ArrayList<Appointment> apptList) {
+		String output = "";
+		for (int i = 0; i < apptList.size(); i++) {
+			output += apptList.get(i).showApptDetails();
+
+		}
+		return output;
 	}
 
 }

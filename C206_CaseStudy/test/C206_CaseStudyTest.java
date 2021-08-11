@@ -14,8 +14,12 @@ public class C206_CaseStudyTest {
 	private Package p2;
 	private Package p3;
 	
+	private Appointment apt1;
+	private Appointment apt2;
+	
 	ArrayList<UserAccount> userList = new ArrayList<UserAccount>();
 	ArrayList<Package> packageList = new ArrayList<Package>();
+	ArrayList<Appointment> appointmentList = new ArrayList<Appointment>();
 	
 	public C206_CaseStudyTest() 
 	{
@@ -34,8 +38,12 @@ public class C206_CaseStudyTest {
 		p2 = new Package("R1234", "restrooms only", "05/08/2021", "15/12/2021", 100);
 		p3 = new Package("K1234", "kitchen only", "21/06/2021", "10/08/2021", 200);
 		
+		apt1 = new Appointment("Wick", "18-8-2020", "11.59", "Fatheen", "Woodlands");
+		apt2 = new Appointment("Rogers", "20-8-2020", "15:30", "Fatheen", "Jurong");
+		
 		userList = new ArrayList<UserAccount>();
 		packageList = new ArrayList<Package>();
+		appointmentList = new ArrayList<Appointment>();
 			
 	}
 
@@ -79,6 +87,7 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that Package arraylist size is 2", 2, packageList.size());
 		assertSame("Check that Package is added", p2, packageList.get(1));
 	}
+	
 	
 	@Test
 	public void testRetrieveAllAccounts() {
@@ -206,6 +215,30 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that Package arraylist size is 0", 0, packageList.size());
 		
 		
+	}
+	
+	@Test
+	public void viewAppointmentTest() {
+		// Test if appointmentList has been added before
+		assertNotNull("Test if there is valid Appointment arraylist to retrieve", appointmentList);
+
+		// Test if the list of Appointment retrieved from the C206_CaseStudy is empty
+		String allAppt = C206_CaseStudy.viewAllAppointment(appointmentList);
+		String testOutput = "";
+		assertEquals("Check that viewing of appintmentment is empty", testOutput, allAppt);
+
+		// Given an empty list, after adding 2 items, test if the size of the list is 2
+		C206_CaseStudy.addAppointment(appointmentList, apt1);
+		C206_CaseStudy.addAppointment(appointmentList, apt2);
+		assertEquals("Test that the Appointment arraylist size is 2", 2, appointmentList.size());
+//
+//		// test if the expected output same as the list if appointment retrieved
+//		allAppt = C206_CaseStudy.viewAllAppointment(appointmentList);
+//		testOutput = String.format("%-10s %-15s %-15s %-15s %15s\n", "Wick", "18-8-2021", "11.59", "Fatheen",
+//				"Woodlands");
+//		testOutput += String.format("%-10s %-15s %-15s %-15s %15s\n", "Rogers", "20-8-2021", "15:30", "Fatheen", "Jurong");
+//
+//		assertEquals("Test that the Appointment output has the above test outputs", testOutput, allAppt);
 	}
 	
 	@After
