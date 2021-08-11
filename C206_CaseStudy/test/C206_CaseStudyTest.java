@@ -52,10 +52,19 @@ public class C206_CaseStudyTest {
 	
 	@Test
 	public void testAddAccount() {
+		assertNotNull("Test if there is a UserAccount arraylist", userList);
 		
+		C206_CaseStudy.addUser(userList, ua1);
+		assertEquals("Check that UserAccount arraylist size is 1", 1, userList.size());
+		assertSame("Check that UserAccount is added", ua1, userList.get(0));
 		
-		
+		C206_CaseStudy.addUser(userList, ua2);
+		assertEquals("Check that UserAccount arraylist size is 2", 2, userList.size());
+		assertSame("Check that UserAccount is added", ua2, userList.get(1));
 	}
+		
+		
+	
 	@Test
 	public void testAddPackage() {
 		// Test if Item list is not null but empty - boundary
@@ -72,7 +81,24 @@ public class C206_CaseStudyTest {
 	
 	@Test
 	public void testRetrieveAllAccounts() {
+		assertNotNull("Test if there is valid UserAccount arraylist to retrieve item", userList);
 		
+		//test if the list of Accounts retrieved from the SourceCentre is empty - boundary
+		String allUsers= C206_CaseStudy.retrieveAllAccounts(userList);
+		String testOutput = "";
+		assertEquals("Check that viewAllAccounts", testOutput, allUsers);
+		
+		//Given an empty list, after adding 2 items, test if the size of the list is 2 - normal
+		C206_CaseStudy.addPackage(packageList, p1);
+		C206_CaseStudy.addPackage(packageList, p2);
+		assertEquals("Test that Package arraylist size is 2", 2, packageList.size());
+		
+		//test if the expected output string same as the list of accounts retrieved from the SourceCentre	
+		allUsers= C206_CaseStudy.retrieveAllAccounts(userList);
+		testOutput = String.format("%-15s %-30s %-20s %-20s \n","Angelika", "Customer","20006337@myrp.edu.sg", "RP123@456");
+		testOutput += String.format("%-15s %-30s %-20s %-20s \n","Ji Fu", "Customer", "19022507@myrp.edu.sg", "RP765@4321");
+	
+		assertEquals("Test that ViewAllAccounts", testOutput, allUsers);
 		
 	}
 	@Test
@@ -102,6 +128,24 @@ public class C206_CaseStudyTest {
 
 	@Test
 	public void testviewAllAccounts() {
+				// Test if Item list is not null but empty - boundary
+				assertNotNull("Test if there is a useraccount arraylist", userList);
+				
+				//test if the list of useraccount retrieved from the Main is empty - boundary
+				String allUser= C206_CaseStudy.retrieveAllAccounts(userList);
+				String testOutput = "";
+				assertEquals("Test that the retrieved Accounts list is empty?", testOutput, allUser);
+				
+				//Given an empty list, after adding 2 items, test if the size of the list is 2 - normal
+				C206_CaseStudy.addUser(userList, ua1);
+				C206_CaseStudy.addUser(userList, ua2);
+				
+				//test if the expected output string same as the list of package retrieved from the SourceCentre	
+				C206_CaseStudy.viewAllAccounts(userList);
+				allUser= C206_CaseStudy.retrieveAllAccounts(userList);
+				testOutput = String.format("%-15s %-30s %-20s %-20s \n","Angelika", "Customer","20006337@myrp.edu.sg", "RP123@456");
+				testOutput += String.format("%-15s %-30s %-20s %-20s \n","Ji Fu", "Customer", "19022507@myrp.edu.sg", "RP765@4321");
+				assertEquals("Test that package has been added", testOutput, allUser);	
 		
 	
 
@@ -133,6 +177,16 @@ public class C206_CaseStudyTest {
 	
 	@Test
 	public void testdeleteAccount() {
+		assertNotNull("Test if there is a UserAccount arraylist", userList);
+		
+		C206_CaseStudy.addUser(userList, ua1);
+		assertEquals("Check that UserAccount arraylist size is 1", 1, userList.size());
+		assertSame("Check that UserAccount is added", ua1, userList.get(0));
+		
+		String name = ua1.getName();
+		C206_CaseStudy.deleteAccount(userList,name);
+
+		assertEquals("Check that UserAccount arraylist size is 0", 0, userList.size());
 		
 		
 	}
